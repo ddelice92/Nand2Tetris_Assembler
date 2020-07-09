@@ -208,7 +208,7 @@ public class Command
 		int value = 0;
 		String strValue = null;
 		boolean var = false;
-		
+		//put this in parser, remove from here
 		try
 		{
 			value = Integer.parseInt(this.string.substring(1));
@@ -221,7 +221,7 @@ public class Command
 		
 		if(!var)
 			strValue = Integer.toBinaryString(value);
-		
+		//add this to coder method
 		while(strValue.length() < 16 && !var)
 		{
 			strValue = "0".concat(strValue);
