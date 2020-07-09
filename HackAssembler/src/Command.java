@@ -222,7 +222,7 @@ public class Command
 		if(!var)
 			strValue = Integer.toBinaryString(value);
 		
-		while(strValue.length() < 16)
+		while(strValue.length() < 16 && !var)
 		{
 			strValue = "0".concat(strValue);
 		}
