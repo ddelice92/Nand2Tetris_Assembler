@@ -61,7 +61,7 @@ public class HackAssembler
 					if(arrCurrent.contains("//"))
 						arrCurrent = arrCurrent.substring(0 , arrCurrent.indexOf("/"));
 					arrCurrent = arrCurrent.trim();
-					comTemp = new Command(arrCurrent);
+					comTemp = new Command(arrCurrent , line);
 					comlist.add(comTemp);
 				}
 			}
