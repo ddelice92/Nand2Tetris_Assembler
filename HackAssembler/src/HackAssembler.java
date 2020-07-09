@@ -46,6 +46,7 @@ public class HackAssembler
 		Command comTemp;
 		boolean truth;
 		int line = 0;
+		Hashtable hash = new Hashtable();
 		//commands are first loaded into an arraylist so that they can be recorded
 		//without knowing the amount of actual command lines
 		while(arrCurrent != null)
@@ -63,6 +64,22 @@ public class HackAssembler
 					arrCurrent = arrCurrent.trim();
 					comTemp = new Command(arrCurrent , line);
 					comlist.add(comTemp);
+					//adding try catch here to make parser push symbols to hash table
+					if(comTemp.getType().equals("L_COMMAND"))
+						hash.push(comTemp.getValue() , comTemp.getLine());
+					else if(comTemp.getType().equals("A_COMMAND"))
+						try
+						{
+							value = Integer.parseInt(this.string.substring(1));
+						}
+						catch(NumberFormatException e)
+						{
+							strValue = this.string.substring(1 , this.string.length());
+							var = true;
+						}
+		
+		if(!var)
+			strValue = Integer.toBinaryString(value);
 				}
 			}
 			
@@ -72,7 +89,6 @@ public class HackAssembler
 		//iterate through arraylist, if gettype returns "A_COMMAND", check 
 		//if address contains a letter. if so, add address to hashtable.
 		//if gettype returns "L_COMMAND", get index of next line.
-		Hashtable hash = new Hashtable();
 		Iterator<Command> iterator = comlist.iterator();
 		while(iterator.hasNext())
 		{
