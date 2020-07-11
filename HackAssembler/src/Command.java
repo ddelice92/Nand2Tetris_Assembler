@@ -205,11 +205,9 @@ public class Command
 	
 	public String getValue()
 	{
-		int value = 0;
-		String strValue = null;
-		boolean var = false;
+		String strValue = this.string.substring(1);
 		//put this in parser, remove from here
-		try
+		/*try
 		{
 			value = Integer.parseInt(this.string.substring(1));
 		}
@@ -217,15 +215,15 @@ public class Command
 		{
 			strValue = this.string.substring(1 , this.string.length());
 			var = true;
-		}
+		}*/
 		
-		if(!var)
+		/*if(!var)
 			strValue = Integer.toBinaryString(value);
 		//add this to coder method
 		while(strValue.length() < 16 && !var)
 		{
 			strValue = "0".concat(strValue);
-		}
+		}*/
 		
 		return strValue;
 	}
@@ -236,5 +234,10 @@ public class Command
 			return this.line + 1;
 		else
 			return this.line;
+	}
+	
+	public void setValue(String string)
+	{
+		this.string = this.string.charAt(0) + string;
 	}
 }
